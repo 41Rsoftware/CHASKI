@@ -4,7 +4,7 @@
 // acumulado) en vez de adivinar por tamaño de monto. También detecta
 // paginación y la fecha oficial de "Última actualización" del MEF.
 // Modo diagnóstico: /api/mef?debug=1
-
+export const config = { runtime: 'edge' };
 const URL_MEF = 'https://ofi5.mef.gob.pe/proyectos_pte/forms/UnidadEjecutora.aspx?tipo=2&IdUE=301096&IdUEBase=301096&periodoBase=2026';
 const TTL = 12 * 60 * 60 * 1000; // 12 horas
 
