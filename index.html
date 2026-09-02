@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Chaski — Asistente de Gestión Municipal</title>
+    <meta name="description"
+        content="Asistente Inteligente de Gestión Municipal · Municipalidad Distrital de Río Negro, Satipo, Junín">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#0e7c4a">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="layout">
+        <!-- ===== SIDEBAR ===== -->
+        <aside class="sidebar">
+            <div class="sidebar-marca">
+                <img src="icons/icon.svg" alt="Chaski" class="logo">
+                <div>
+                    <h1>CHASKI</h1>
+                    <small>Gestión Municipal</small>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <button class="nav-link activa" data-vista="vistaPanel">📊 <span>Panel</span></button>
+                <button class="nav-link" data-vista="vistaChat">💬 <span>Chat IA</span></button>
+                <button class="nav-link" data-vista="vistaAgenda">📅 <span>Agenda</span></button>
+                <button class="nav-link" data-vista="vistaObras">🏗️ <span>Obras</span><span class="badge-punto"
+                        id="badgeAlertas" hidden></span></button>
+                <button class="nav-link" data-vista="vistaTramites">📄 <span>Trámites</span></button>
+                <button class="nav-link" data-vista="vistaDocumentos">📁 <span>Documentos</span></button>
+                <button class="nav-link" data-vista="vistaFuentes">🌐 <span>Fuentes de datos</span></button>
+            </nav>
+
+            <div class="sidebar-pie">
+                <button id="btnInstalar" class="btn-instalar" hidden>📲 Instalar app</button>
+                <small>M.D. Río Negro · v0.3.0</small>
+            </div>
+        </aside>
+
+        <!-- ===== CONTENIDO ===== -->
+        <main class="contenido">
+            <header class="barra-superior">
+                <h2 id="tituloVista">📊 Panel de Gestión</h2>
+                <span class="estado" title="En línea"></span>
+            </header>
+
+            <!-- VISTA: PANEL -->
+            <section id="vistaPanel" class="vista vista-scroll">
+                <div class="entidad">
+                    <img src="icons/icon.svg" alt="Escudo" class="entidad-logo">
+                    <div class="entidad-texto">
+                        <h3 id="entidadNombre">Municipalidad Distrital de Río Negro</h3>
+                        <p id="entidadUbicacion">Satipo, Junín, Perú</p>
+                        <p id="entidadAlcalde" class="entidad-alcalde">Alcalde: —</p>
+                    </div>
+                    <span class="chip chip-ok">● Activo</span>
+                </div>
+
+                <div class="stats" id="statsPanel"></div>
+
+                <div class="panel-grid">
+                    <div class="card">
+                        <h3>📅 Agenda próxima</h3>
+                        <ul class="lista-panel" id="panelAgenda"></ul>
+                        <button class="btn-enlace" data-vista="vistaAgenda">Ver agenda completa →</button>
+                    </div>
+                    <div class="card">
+                        <h3>⚠️ Obras en riesgo</h3>
+                        <ul class="lista-panel" id="panelAlertas"></ul>
+                        <button class="btn-enlace" data-vista="vistaObras">Ver todas las obras →</button>
+                    </div>
+                    <div class="card">
+                        <h3>🏛️ Información municipal</h3>
+                        <dl class="info" id="panelInfo"></dl>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-head">
+                        <h3>📁 Documentos clave</h3>
+                        <button class="btn-enlace" data-vista="vistaDocumentos">Ver todos →</button>
+                    </div>
+                    <div id="panelDocs"></div>
+                </div>
+            </section>
+
+            <!-- VISTA: CHAT -->
+            <section id="vistaChat" class="vista vista-chat" hidden>
+                <section id="mensajes" class="mensajes" aria-live="polite"></section>
+                <form id="formChat" class="entrada">
+                    <input type="text" id="texto" placeholder="Escribe tu consulta..." autocomplete="off">
+                    <button type="submit" id="btnEnviar" aria-label="Enviar">➤</button>
+                </form>
+            </section>
+
+            <!-- VISTA: AGENDA -->
+            <section id="vistaAgenda" class="vista vista-scroll" hidden>
+                <div class="agenda-scroll">
+                    <div class="calendario">
+                        <div class="cal-header">
+                            <button id="mesAnterior" class="btn-nav" aria-label="Mes anterior">‹</button>
+                            <h2 id="tituloMes">—</h2>
+                            <button id="mesSiguiente" class="btn-nav" aria-label="Mes siguiente">›</button>
+                        </div>
+                        <div class="dias-semana" id="diasSemana"></div>
+                        <div class="cuadricula-dias" id="cuadriculaDias"></div>
+                    </div>
+                    <div class="dia-detalle">
+                        <div class="dia-detalle-header">
+                            <h3 id="tituloDia">—</h3>
+                            <button id="btnNuevoEvento" class="btn-principal">＋ Evento</button>
+                        </div>
+                        <ul id="listaEventos" class="lista-eventos"></ul>
+                    </div>
+                </div>
+
+                <dialog id="modalEvento" class="modal">
+                    <form id="formEvento">
+                        <h3>📅 Nuevo evento</h3>
+                        <label>Título <input type="text" id="evTitulo" required maxlength="120"></label>
+                        <label>Fecha <input type="date" id="evFecha" required></label>
+                        <label>Hora <input type="time" id="evHora"></label>
+                        <label>Tipo
+                            <select id="evTipo">
+                                <option value="obra">🏗️ Obra</option>
+                                <option value="reunion">👥 Reunión</option>
+                                <option value="tramite">📄 Trámite</option>
+                                <option value="recordatorio" selected>⏰ Recordatorio</option>
+                                <option value="otro">📌 Otro</option>
+                            </select>
+                        </label>
+                        <label>Notas <textarea id="evNotas" rows="3" maxlength="500"></textarea></label>
+                        <div class="modal-botones">
+                            <button type="button" id="btnCancelarEvento" class="btn-secundario">Cancelar</button>
+                            <button type="submit" class="btn-principal">Guardar</button>
+                        </div>
+                    </form>
+                </dialog>
+            </section>
+
+            <!-- VISTA: OBRAS -->
+            <section id="vistaObras" class="vista vista-scroll" hidden>
+                <p class="aviso-ejemplo">Estas son obras de <strong>ejemplo</strong> mientras cargas las reales desde
+                    Infobras / MEF (ver "Fuentes de datos"). Reemplázalas editando <code>data/obras.json</code>.</p>
+                <div class="listaObras" id="listaObras"></div>
+            </section>
+
+            <!-- VISTA: TRÁMITES -->
+            <section id="vistaTramites" class="vista vista-scroll" hidden>
+                <p class="aviso-ejemplo">Estos son trámites de <strong>ejemplo</strong>. Reemplázalos con el TUPA 2026 real
+                    (enlace en "Fuentes de datos") editando <code>data/tramites.json</code>.</p>
+                <div class="listaTramites" id="listaTramites"></div>
+            </section>
+
+            <!-- VISTA: DOCUMENTOS -->
+            <section id="vistaDocumentos" class="vista vista-scroll" hidden>
+                <div class="card">
+                    <h3>📁 Documentos de gestión</h3>
+                    <div id="listaDocumentos"></div>
+                </div>
+            </section>
+
+            <!-- VISTA: FUENTES DE DATOS -->
+            <section id="vistaFuentes" class="vista vista-scroll" hidden>
+
+                <div class="card tr-seccion">
+                    <div class="tr-head">
+                        <h3>Clima y sismos — en vivo</h3>
+                        <span class="en-vivo"><i></i> EN VIVO</span>
+                    </div>
+                    <div class="tr-grid">
+                        <div class="tr-card" id="trClima">Cargando clima…</div>
+                        <div class="tr-card">
+                            <ul class="sismos" id="trSismos"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card tr-seccion">
+                    <div class="tr-head">
+                        <h3>Ejecución presupuestal</h3>
+                    </div>
+                    <div class="tr-card" id="trMef">Consultando…</div>
+                </div>
+
+                <div class="card">
+                    <h3>🏛️ Contactos oficiales verificados</h3>
+                    <dl class="info" id="fuentesContactos"></dl>
+                </div>
+
+                <div class="card">
+                    <h3>🔗 Portales oficiales de la M.D. Río Negro</h3>
+                    <p class="obra-meta">Estos son los portales de donde debe salir todo dato real. El presupuesto y las obras
+                        exactas no se pueden leer de forma automática porque el MEF bloquea el acceso de programas
+                        (<code>robots.txt</code>) y el Portal de Transparencia carga sus tablas con JavaScript. Ábrelos aquí y
+                        copia el dato a <code>data/*.json</code> con "Añadir información" cuando lo tengas.</p>
+                    <ul class="fuentes" id="listaFuentes"></ul>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/dexie@4/dist/dexie.min.js"></script>
+    <script src="js/bd.js"></script>
+    <script src="js/datos.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/panel.js"></script>
+    <script src="js/agendas.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/tiemporeal.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+[
+    {
+        "nombre": "Licencia de funcionamiento definitiva",
+        "palabrasClave": [
+            "licencia",
+            "funcionamiento",
+            "negocio",
+            "tienda",
+            "abrir",
+            "comercio"
+        ],
+        "requisitos": [
+            "Formulario de solicitud (formato FUT)",
+            "Copia del DNI del representante",
+            "Certificado de zonificación y viabilidad",
+            "Recibo de pago de la tasa"
+        ],
+        "costo": "según escala del TUPA (variable por actividad)",
+        "plazo": "10 días hábiles",
+        "area": "Licencias y Autorizaciones",
+        "fuente": "TUPA M.D. Río Negro (ejemplo — verificar contra el TUPA 2026 real)",
+        "_ejemplo": true,
+        "fuenteURL": "https://www.gob.pe/institucion/munirionegro/informes-publicaciones/8020607-texto-unico-de-procedimientos-administrativos-tupa-2026"
+    },
+    {
+        "nombre": "Certificado de zonificación y viabilidad de servicios",
+        "palabrasClave": [
+            "zonificacion",
+            "viabilidad",
+            "certificado",
+            "ubicacion",
+            "predio"
+        ],
+        "requisitos": [
+            "Solicitud escrita",
+            "Copia del DNI",
+            "Copia del documento que acredite la posesión o propiedad"
+        ],
+        "costo": "según escala del TUPA",
+        "plazo": "5 días hábiles",
+        "area": "Obras Privadas y Catastro",
+        "fuente": "TUPA M.D. Río Negro (ejemplo — verificar contra el TUPA 2026 real)",
+        "_ejemplo": true,
+        "fuenteURL": "https://www.gob.pe/institucion/munirionegro/informes-publicaciones/8020607-texto-unico-de-procedimientos-administrativos-tupa-2026"
+    },
+    {
+        "nombre": "Licencia de obra menor",
+        "palabrasClave": [
+            "obra",
+            "construccion",
+            "edificar",
+            "casa",
+            "licencia",
+            "pavimento"
+        ],
+        "requisitos": [
+            "Formulario F00 UE-1",
+            "Copia del DNI",
+            "Planos de ubicación y planta",
+            "Factibilidad de servicios"
+        ],
+        "costo": "según metros cuadrados (escala del TUPA)",
+        "plazo": "15 días hábiles",
+        "area": "Obras Privadas",
+        "fuente": "TUPA M.D. Río Negro (ejemplo — verificar contra el TUPA 2026 real)",
+        "_ejemplo": true,
+        "fuenteURL": "https://www.gob.pe/institucion/munirionegro/informes-publicaciones/8020607-texto-unico-de-procedimientos-administrativos-tupa-2026"
+    },
+    {
+        "nombre": "Autorización de propaganda y anuncios",
+        "palabrasClave": [
+            "propaganda",
+            "anuncio",
+            "publicidad",
+            "afiche",
+            "cartel",
+            "banner"
+        ],
+        "requisitos": [
+            "Solicitud indicando lugar y tiempo",
+            "Copia del DNI",
+            "Recibo de pago de la tasa"
+        ],
+        "costo": "según tamaño y duración (escala del TUPA)",
+        "plazo": "3 días hábiles",
+        "area": "Limpieza Pública y Ornato",
+        "fuente": "TUPA M.D. Río Negro (ejemplo — verificar contra el TUPA 2026 real)",
+        "_ejemplo": true,
+        "fuenteURL": "https://www.gob.pe/institucion/munirionegro/informes-publicaciones/8020607-texto-unico-de-procedimientos-administrativos-tupa-2026"
+    }
+]

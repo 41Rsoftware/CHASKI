@@ -1,0 +1,36 @@
+[
+    {
+        "nombre": "TUPA 2026 — Texto Único de Procedimientos Administrativos",
+        "tipo": "Normativa",
+        "estado": "verificado",
+        "url": "https://www.gob.pe/institucion/munirionegro/informes-publicaciones/8020607-texto-unico-de-procedimientos-administrativos-tupa-2026"
+    },
+    {
+        "nombre": "Portal de Transparencia Estándar — enlaces institucionales",
+        "tipo": "Transparencia",
+        "estado": "verificado",
+        "url": "https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=12091"
+    },
+    {
+        "nombre": "Presupuesto Institucional Modificado (PIM) 2026",
+        "tipo": "Presupuesto",
+        "estado": "pendiente",
+        "url": "https://ofi5.mef.gob.pe/ssi/Ssi/Index?tipo=2&codigo=2676928"
+    },
+    {
+        "nombre": "Proyectos de inversión / Infobras",
+        "tipo": "Obras",
+        "estado": "pendiente",
+        "url": "https://www.transparencia.gob.pe/reportes_directos/pte_transparencia_proyectos.aspx?id_entidad=12091&id_tema=26&ver="
+    },
+    {
+        "nombre": "Rendición de cuentas",
+        "tipo": "Transparencia",
+        "estado": "pendiente"
+    },
+    {
+        "nombre": "Plan de Desarrollo Local Concertado",
+        "tipo": "Planificación",
+        "estado": "pendiente"
+    }
+]

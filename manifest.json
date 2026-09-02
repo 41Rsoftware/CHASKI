@@ -1,0 +1,12 @@
+{
+    "name": "Chaski · Municipalidad Distrital de Río Negro",
+    "short_name": "Chaski",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#f4f6f8",
+    "theme_color": "#0e7c4a",
+    "description": "Asistente inteligente de gestión municipal de Río Negro, Satipo, Junín.",
+    "icons": [
+        { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    ]
+}

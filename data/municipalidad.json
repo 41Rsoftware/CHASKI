@@ -1,0 +1,35 @@
+{
+    "nombre": "Municipalidad Distrital de Río Negro",
+    "ubigeo": "Satipo, Junín, Perú",
+    "codigoEntidadTransparencia": "12091",
+    "codigoUnidadEjecutoraMEF": "301096",
+    "alcalde": "Yuri Ferrini Nieto",
+    "anioFiscal": 2026,
+    "pim": null,
+    "ejecutado": null,
+    "notaDatos": "PIM y devengado: pendientes. El sistema del MEF (ofi5.mef.gob.pe) bloquea el acceso automático (robots.txt) y el visor del Portal de Transparencia carga la cifra con JavaScript, así que ningún script (ni este ni el de Vercel) puede leerla sola. Consúltala en el enlace de 'Fuentes de datos' y anótala aquí a mano.",
+    "contacto": {
+        "direccion": "Municipalidad Distrital de Río Negro, Satipo, Junín — confirmar dirección exacta en el portal",
+        "telefono": "pendiente de verificar",
+        "correo": "pendiente de verificar",
+        "web": "https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=12091"
+    },
+    "transparencia": {
+        "responsablePortal": "Pedro Chihuan Cuadrado",
+        "correoPortal": "soporte@munirionegro.gob.pe",
+        "telefonoPortal": "900654156",
+        "responsableAccesoInformacion": "Deyvi Gonzalo Bravo Medrano",
+        "correoAccesoInformacion": "dbravo@munirionegro.gob.pe",
+        "telefonoAccesoInformacion": "965858548",
+        "fuente": "Portal de Transparencia Estándar, verificado el 2 de setiembre de 2026"
+    },
+    "fuentes": {
+        "mefUnidadEjecutora": "https://ofi5.mef.gob.pe/proyectos_pte/forms/UnidadEjecutora.aspx?tipo=2&IdUE=301096&IdUEBase=301096&periodoBase=2026",
+        "mefConsultaAmigable": "https://ofi5.mef.gob.pe/ssi/Ssi/Index?tipo=2&codigo=2676928",
+        "tupa2026": "https://www.gob.pe/institucion/munirionegro/informes-publicaciones/8020607-texto-unico-de-procedimientos-administrativos-tupa-2026",
+        "portalTransparencia": "https://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=12091",
+        "presupuestoTransparencia": "https://www.transparencia.gob.pe/reportes_directos/pte_transparencia_info_finan.aspx?id_entidad=12091&id_tema=19&ver=",
+        "proyectosInfobras": "https://www.transparencia.gob.pe/reportes_directos/pte_transparencia_proyectos.aspx?id_entidad=12091&id_tema=26&ver=",
+        "datosAbiertosMEF": "https://www.datosabiertos.gob.pe/dataset?q=presupuesto+municipal"
+    }
+}
