@@ -56,8 +56,7 @@ function pintarTablaMEF() {
     if (!cont) return;
 
     if (!PRESU_MEF || !PRESU_MEF.filas || !PRESU_MEF.filas.length) {
-        cont.innerHTML = '<p class="tr-error">Todavía no hay tabla presupuestal cargada (ni en vivo ni local). ' +
-            'Corre <code>/api/mef?debug=1</code> y revisa qué encontró, o completa <code>data/presupuesto_mef.json</code> a mano.</p>';
+        cont.innerHTML = '<p class="tr-error">Sin datos oficiales del MEF por ahora. Cuando el scraper conecte con el Portal de Transparencia Económica, los proyectos aparecerán aquí automáticamente. No se muestran cifras inventadas.</p>';
         return;
     }
 
