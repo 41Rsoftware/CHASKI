@@ -6,7 +6,7 @@
 // Modo diagnóstico: /api/mef?debug=1
 export const config = { runtime: 'edge' };
 const URL_MEF = 'https://ofi5.mef.gob.pe/proyectos_pte/forms/UnidadEjecutora.aspx?tipo=2&IdUE=301096&IdUEBase=301096&periodoBase=2026';
-const TTL = 12 * 60 * 60 * 1000; // 12 horas
+const TTL = 24 * 60 * 60 * 1000; // 12 horas
 
 let cache = { ts: 0, datos: null };
 
@@ -165,12 +165,15 @@ export default async function handler(request) {
 
     try {
         const r = await fetch(URL_MEF, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-                'Accept': 'text/html,application/xhtml+xml'
-            },
-            signal: AbortSignal.timeout(12000)
-        });
+    headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'es-PE,es;q=0.9,en;q=0.8',
+        'Referer': 'https://www.mef.gob.pe/',
+        'Cache-Control': 'no-cache'
+    },
+    signal: AbortSignal.timeout(25000)
+});
 
         const html = await r.text();
 
