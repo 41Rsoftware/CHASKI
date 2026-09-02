@@ -4,7 +4,7 @@
 // acumulado) en vez de adivinar por tamaño de monto. También detecta
 // paginación y la fecha oficial de "Última actualización" del MEF.
 // Modo diagnóstico: /api/mef?debug=1
-export const config = { runtime: 'edge' };
+
 const URL_MEF = 'https://ofi5.mef.gob.pe/proyectos_pte/forms/UnidadEjecutora.aspx?tipo=2&IdUE=301096&IdUEBase=301096&periodoBase=2026';
 const TTL = 24 * 60 * 60 * 1000; // 12 horas
 
@@ -151,36 +151,55 @@ function detectarFechaOficial(html) {
 
 // ----- handler -----
 
-export default async function handler(request) {
-    if (request.method !== 'GET') {
-        return Response.json({ error: 'Método no permitido' }, { status: 405 });
+export default async function handler(req, res) {
+    // Compatibilidad: a veces Vercel pasa Request web, a veces req/res de Node
+    const isWeb = typeof Request !== 'undefined' && req instanceof Request;
+    const method = isWeb ? req.method : req.method;
+    const urlStr = isWeb ? req.url : (req.url ? `https://x${req.url}` : 'https://x/');
+    const debug = new URL(urlStr, 'https://x').searchParams.get('debug') === '1';
+
+    const send = (status, body) => {
+        if (isWeb) return Response.json(body, { status });
+        res.statusCode = status;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400');
+        res.end(JSON.stringify(body));
+        return undefined;
+    };
+
+    if (method !== 'GET') {
+        return send(405, { error: 'Método no permitido' });
     }
 
-    const params = new URL(request.url).searchParams;
-    const debug = params.get('debug') === '1';
-
     if (!debug && cache.datos && Date.now() - cache.ts < TTL) {
-        return Response.json({ ...cache.datos, cache: true });
+        return send(200, { ...cache.datos, cache: true });
     }
 
     try {
-        const r = await fetch(URL_MEF, {
-    headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-        'Accept-Language': 'es-PE,es;q=0.9,en;q=0.8',
-        'Referer': 'https://www.mef.gob.pe/',
-        'Cache-Control': 'no-cache'
-    },
-    signal: AbortSignal.timeout(25000)
-});
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 20000);
+
+        let r;
+        try {
+            r = await fetch(URL_MEF, {
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                    'Accept-Language': 'es-PE,es;q=0.9,en;q=0.8',
+                    'Referer': 'https://www.mef.gob.pe/',
+                    'Cache-Control': 'no-cache'
+                },
+                signal: controller.signal
+            });
+        } finally {
+            clearTimeout(timer);
+        }
 
         const html = await r.text();
 
-        // ----- MODO DIAGNÓSTICO: mira esto primero -----
         if (debug) {
             const tablas = extraerTablas(html);
-            return Response.json({
+            return send(200, {
                 ok: true,
                 httpStatus: r.status,
                 htmlBytes: html.length,
@@ -188,7 +207,6 @@ export default async function handler(request) {
                 filaEncabezadoDetectada: tablas.map(t => encontrarFilaEncabezado(t)),
                 paginacion: detectarPaginacion(html),
                 fechaOficialDetectada: detectarFechaOficial(html),
-                // primeras 6 filas de cada tabla, para identificar cuál es la buena
                 muestraTablas: tablas.slice(0, 5).map(t => t.slice(0, 6))
             });
         }
@@ -196,10 +214,12 @@ export default async function handler(request) {
         const tablas = extraerTablas(html);
         const filas = buscarTablaProyectos(tablas);
 
-        if (!filas) {
-            return Response.json({
+        if (!filas || !filas.length) {
+            return send(200, {
                 fuente: 'local',
-                motivo: 'La página del MEF no expone una tabla de proyectos legible en el HTML inicial (probable render por JS/postback). Revisa /api/mef?debug=1.',
+                motivo: 'La página del MEF respondió pero no se encontró una tabla de proyectos legible (posible postback ASP.NET o HTML vacío).',
+                httpStatus: r.status,
+                htmlBytes: html.length,
                 actualizado: new Date().toISOString()
             });
         }
@@ -223,12 +243,16 @@ export default async function handler(request) {
         };
 
         cache = { ts: Date.now(), datos: salida };
-        return Response.json(salida);
+        return send(200, salida);
 
     } catch (error) {
-        return Response.json({
+        const msg = (error && error.name === 'AbortError')
+            ? 'Timeout: el MEF no respondió en 20 segundos'
+            : String(error && error.message ? error.message : error);
+
+        return send(200, {
             fuente: 'local',
-            motivo: 'Sin conexión con el MEF: ' + error.message,
+            motivo: 'Sin conexión con el MEF: ' + msg,
             actualizado: new Date().toISOString()
         });
     }
