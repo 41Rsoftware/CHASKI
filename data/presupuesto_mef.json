@@ -1,15 +1,13 @@
 {
-  "fuente": "Portal de Transparencia Económica — MEF",
-  "url": "https://ofi5.mef.gob.pe/proyectos_pte/forms/UnidadEjecutora.aspx?tipo=2&IdUE=301096&IdUEBase=301096&periodoBase=2025",
-  "unidadEjecutora": "UE 301096 · Municipalidad Distrital de Río Negro",
-  "periodo": 2025,
-  "actualizado": "2025-01-01",
-  "nota": "EJEMPLO — reemplazar con los datos reales de la página del MEF",
-  "filas": [
-    { "proyecto": "Mejoramiento del servicio de agua potable — sector centro", "pim": 2400000, "devengado": 360000 },
-    { "proyecto": "Pavimentación Jr. Los Andes — 1.ª etapa", "pim": 1850000, "devengado": 555000 },
-    { "proyecto": "Construcción de losa deportiva — anexo San Pablo", "pim": 480000, "devengado": 278400 },
-    { "proyecto": "Ampliación de red de alcantarillado — Jr. Satipo", "pim": 950000, "devengado": 47500 },
-    { "proyecto": "Mejoramiento de la plaza de armas", "pim": 1350000, "devengado": 1350000 }
-  ]
-}
+    "fuente": "local",
+    "unidadEjecutora": "UE 301096 · Municipalidad Distrital de Río Negro",
+    "periodo": 2026,
+    "url": "https://ofi5.mef.gob.pe/proyectos_pte/forms/UnidadEjecutora.aspx?tipo=2&IdUE=301096&IdUEBase=301096&periodoBase=2026",
+    "actualizado": "PENDIENTE — reemplaza con la fecha 'Última actualización' que muestra el MEF",
+    "motivo": "Todavía no se ha confirmado ningún proyecto con cifras reales del MEF. No se inventaron filas.",
+    "pagina": 1,
+    "paginasTotales": null,
+    "totalRegistros": null,
+    "soloPrimeraPagina": false,
+    "filas": []
+} 

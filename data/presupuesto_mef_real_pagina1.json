@@ -1,0 +1,26 @@
+{
+    "fuente": "local",
+    "unidadEjecutora": "UE 301096 · Municipalidad Distrital de Río Negro",
+    "periodo": 2026,
+    "url": "https://ofi5.mef.gob.pe/proyectos_pte/forms/UnidadEjecutora.aspx?tipo=2&IdUE=301096&IdUEBase=301096&periodoBase=2026",
+    "actualizado": "01/09/2026",
+    "motivo": "Transcrito a mano de una captura de pantalla del MEF (página 1 de 3). Varios nombres de proyecto están truncados por el ancho de columna del MEF — verifica el nombre completo antes de citarlo en la presentación.",
+    "pagina": 1,
+    "paginasTotales": 3,
+    "totalRegistros": 75,
+    "soloPrimeraPagina": true,
+    "filas": [
+        { "codigo": "2001621", "snip": null, "proyecto": "ESTUDIOS DE PRE-INVERSION", "costo": 0, "pim": 374385, "devengado": 133650, "avance": 35.7, "devengadoAcumulado": 6240505 },
+        { "codigo": "2284371", "snip": "326091", "proyecto": "MEJORAMIENTO Y AMPLIACION DEL SERVICIO DE AGUA POTAB…", "costo": 26604009, "pim": 96035, "devengado": 0, "avance": 0.0, "devengadoAcumulado": 14807023 },
+        { "codigo": "2304224", "snip": "343118", "proyecto": "MEJORAMIENTO DE LA CAPACIDAD OPERATIVA DEL POOL DE M…", "costo": 11558916, "pim": 1663640, "devengado": 1648640, "avance": 99.1, "devengadoAcumulado": 9802255 },
+        { "codigo": "2305835", "snip": "344556", "proyecto": "CREACION DE LOS SERVICIOS DEPORTIVOS Y RECREATIVOS D…", "costo": 4081469, "pim": 410354, "devengado": 364255, "avance": 88.8, "devengadoAcumulado": 3967019 },
+        { "codigo": "2312224", "snip": "349379", "proyecto": "MEJORAMIENTO DEL SERVICIO DE EDUCACION PRIMARIA EN L…", "costo": 2639266, "pim": 1058103, "devengado": 0, "avance": 0.0, "devengadoAcumulado": 44100 },
+        { "codigo": "2339894", "snip": "378712", "proyecto": "MEJORAMIENTO DE LA PRODUCTIVIDAD Y COMPETITIVIDAD D…", "costo": 5194918, "pim": 4500, "devengado": 0, "avance": 0.0, "devengadoAcumulado": 44000 },
+        { "codigo": "2372045", "snip": "2372045", "proyecto": "MEJORAMIENTO Y AMPLIACION DEL SERVICIO DE EDUCACION…", "costo": 4175845, "pim": 978973, "devengado": 52115, "avance": 5.3, "devengadoAcumulado": 2062015 },
+        { "codigo": "2407085", "snip": "2407085", "proyecto": "CREACION DEL SERVICIO EDUCATIVO SECUNDARIA EN LA I.E.", "costo": 1384083, "pim": 604086, "devengado": 66814, "avance": 11.1, "devengadoAcumulado": 510162 },
+        { "codigo": "2439022", "snip": "2439022", "proyecto": "CREACION DEL SERVICIO DE AGUA POTABLE Y SANEAMIENTO", "costo": 806769, "pim": 4720, "devengado": 4720, "avance": 100.0, "devengadoAcumulado": 802681 },
+        { "codigo": "2490869", "snip": "2490869", "proyecto": "MEJORAMIENTO Y AMPLIACION DEL SERVICIO FUNERARIO DE…", "costo": 3748163, "pim": 665388, "devengado": 18000, "avance": 2.7, "devengadoAcumulado": 1333219 },
+        { "codigo": "2508102", "snip": "2508102", "proyecto": "MEJORAMIENTO Y AMPLIACION DEL SERVICIO DE AGUA POTAB…", "costo": 7285700, "pim": 0, "devengado": 0, "avance": 0.0, "devengadoAcumulado": 25000 },
+        { "codigo": "2525452", "snip": "2525452", "proyecto": "MEJORAMIENTO Y AMPLIACION DEL SISTEMA DE AGUA POTAB…", "costo": 662140, "pim": 592141, "devengado": 589540, "avance": 99.6, "devengadoAcumulado": 659540 }
+    ]
+}

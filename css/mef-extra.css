@@ -1,0 +1,85 @@
+/* ===== TABLA MEF (ejecución presupuestal por proyecto) ===== */
+.mef-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.mef-head h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+}
+
+.tabla-scroll {
+    overflow-x: auto;
+}
+
+.tabla-mef {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+
+.tabla-mef th,
+.tabla-mef td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--gris-fondo);
+    white-space: nowrap;
+}
+
+.tabla-mef .celda-proyecto {
+    white-space: normal;
+    max-width: 260px;
+}
+
+.tabla-mef .celda-num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.tabla-mef tfoot td {
+    border-top: 2px solid var(--gris-fondo);
+    border-bottom: none;
+}
+
+.pct-barra {
+    width: 90px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--gris-fondo);
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.pct-barra span {
+    display: block;
+    height: 100%;
+    background: var(--verde);
+}
+
+.pct-barra span.lenta {
+    background: #d97706;
+}
+
+.pct-barra span.critica {
+    background: #c2483c;
+}
+
+.pct-texto {
+    font-size: 0.75rem;
+    color: var(--texto-suave);
+}
+
+.celda-codigo {
+    font-family: monospace;
+    color: var(--texto-suave);
+    white-space: nowrap;
+}
