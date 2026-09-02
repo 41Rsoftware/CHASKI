@@ -1,7 +1,7 @@
 // /api/chat.js — Cerebro protegido de Chaski (v2)
 // Cambios: acepta "contexto" (agenda del usuario + trámites oficiales)
 // y lo entrega a la IA delimitado como DATOS, no como instrucciones.
-
+export const config = { runtime: 'edge' };
 const URL_GROQ = 'https://api.groq.com/openai/v1/chat/completions';
 const MODELO = 'llama-3.3-70b-versatile';
 
